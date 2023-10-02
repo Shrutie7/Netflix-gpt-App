@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "netflixapp-c91d5",
+    "myapp": "netflixapp-c91d5"
+  },
+  "targets": {},
+  "etags": {}
+}
