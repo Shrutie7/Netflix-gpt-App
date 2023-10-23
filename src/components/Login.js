@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import Header from "./Header";
-import { Link, useNavigate } from "react-router-dom";
 import { checkValidData } from "../utils/validate";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from "../utils/firebase";
 import {signInWithEmailAndPassword } from "firebase/auth";
 import { adduser } from "../utils/userSlice";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
+import { Photo_url } from "../utils/constant";
 const Login = () => {
   // by default signin for will come
   const [isSigninform, setisSigninform] = useState(true);
@@ -14,13 +14,13 @@ const Login = () => {
   const [showpassword, setshowpassword] = useState(false);
   const [focuspwd, setfocuspwd] = useState(false);
   const [errormessage, seterrormessage] = useState(null);
-const nav = useNavigate()
+
 
 const dispatch = useDispatch();
 
   
   const user = useSelector((store)=>store.user)
-  console.log(user)
+
   //create reference for email and password
   const emailref = useRef(null);
   const pwdref = useRef(null);
@@ -68,17 +68,17 @@ const dispatch = useDispatch();
 
     //as soon as new user is signed up/registered calling update profile with name and photo url and then we will update store once again here with displayname and photourl also 
     updateProfile(user, {
-      displayName:fullnameref.current.value, photoURL: "https://avatars.githubusercontent.com/u/82982277?v=4"
+      displayName:fullnameref.current.value, photoURL: Photo_url
     }).then(() => {
       // Profile updated!
       //once profile is updated then navigate
-    console.log(user);
+    
 
     //update store again with displayName and photourl
     // only user will not have updated value here user is the updated user which comes from auth.currentUser (make sure user is updated user not the older value)
     const { uid, email, displayName,photoURL } = auth.currentUser;
     dispatch(adduser({uid:uid,emailid :email,displayName:displayName,photoURL:photoURL}));
-    nav("/browse");
+    // nav("/browse");
     }).catch((error) => {
       // An error occurred
       seterrormessage(error.message)
@@ -99,9 +99,7 @@ const dispatch = useDispatch();
     // Signed in 
     const user = userCredential.user;
 
-
-    console.log(user)
-    nav("/browse")
+    // nav("/browse")
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -127,7 +125,6 @@ const dispatch = useDispatch();
     setshowpassword(!showpassword);
   };
   const handlefocuspwd = (e) => {
-    console.log(e);
     setfocuspwd(true);
   };
   useEffect(() => {
