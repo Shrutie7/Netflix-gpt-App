@@ -32,6 +32,13 @@
 -  pass as props the extracted data original_title, overview in VideoTitle component
 -  Embed youtube video with that key and make it autoplay and mute 
 - videos api takes movie id and gives videos associated with that movie id . response gives multiple videos associated with that movie .we need type trailer video only . key we get is youtube key helps to fetch video from youtube for VideoBackground component make api call we need movie id from mainContainer component from now playing api 
+- build Secondary Component 
+- build Movie List
+- build Movie Card 
+- TMDB Image CDN
+- usePopular Movie Custom Hook
+
+
 <!-- it will give same photourl for previous users hence create a new user the it will show image in constant js file given  -->
 
 

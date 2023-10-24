@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.moviecardmain{
+    width: 308px;
+    margin-left: 28px !important;
+}
+.moviecardmain:first-child{
+    width: 208px;
+    margin-left: 0px;
+}

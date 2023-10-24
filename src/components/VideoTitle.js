@@ -2,10 +2,12 @@ import React from "react";
 import play from "../icons/play_icon_134504.png";
 import moreinfo from "../icons/PngItem_3406810.png";
 
-const VideoTitle = ({ title, overview }) => {
+const VideoTitle = ({ title, overview ,poster_path,backdrop_path}) => {
   return (
     <div className="pt-[20%] px-24 w-screen aspect-video absolute text-white bg-gradient-to-r from-black">
       <h1 className="text-6xl font-bold">{title}</h1>
+
+      {/* <img src={"https://image.tmdb.org/t/p/w185"+poster_path} className="h-44 w-80"></img> */}
       <p className="py-6 text-lg w-2/4">{overview}</p>
 
       <div className="flex">

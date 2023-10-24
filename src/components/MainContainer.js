@@ -11,18 +11,18 @@ const MainContainer = () => {
   //if movies list is null then return simply so we dont get error known as EARLY RETURN 
   if(!movies) return ; 
 // lets say that mainContainer will have the first movie in the movies List
-  const mainMovie = movies[0];
+  const mainMovie = movies[7];
 //   will throw error because initially store has no movies i.e movies list is null
 
 
 
 //   pass as props the extracted data original_title,overview in VideoTitle component and movie id to VideoBackground Component
-const{original_title,overview,id} = mainMovie
+const{original_title,overview,id,poster_path,backdrop_path} = mainMovie
  
 
   return (
     <div>
-      <VideoTitle title={original_title} overview ={overview}/>
+      <VideoTitle title={original_title} overview ={overview} poster_path={poster_path} backdrop_path={backdrop_path}/>
       <VideoBackground movieId={id} />
 
 
