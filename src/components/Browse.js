@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import {useNowPlayingMovies} from "../hooks/useNowPlayingMovies";
+import { useNowPlayingMovies } from "../hooks/useNowPlayingMovies";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import usePopularMovies from "../hooks/usePopularMovies";
@@ -10,31 +10,43 @@ import useAiringTodayTvshow from "../hooks/useAiringTodayTvshow";
 import useOnAirTvshow from "../hooks/useOnAirTvshow";
 import usePopularTvShow from "../hooks/usePopularTvShow";
 import useTopRatedTvShow from "../hooks/useTopRatedTvShow";
+import GPTSearch from "./GPTSearch";
+import { useSelector } from "react-redux";
 
 const Browse = () => {
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
-  // call custom hook to fetch nowplayingmovies and update store 
-useNowPlayingMovies();
 
-// call custom hook to fetch popularMovies and update store 
-usePopularMovies();
+  // call custom hook to fetch nowplayingmovies and update store
+  useNowPlayingMovies();
 
-useTrendingMovies();
+  // call custom hook to fetch popularMovies and update store
+  usePopularMovies();
 
-useUpcomingMovies();
+  useTrendingMovies();
 
-useAiringTodayTvshow();
+  useUpcomingMovies();
 
-useOnAirTvshow();
+  useAiringTodayTvshow();
 
-usePopularTvShow();
+  useOnAirTvshow();
 
-useTopRatedTvShow();
+  usePopularTvShow();
+
+  useTopRatedTvShow();
   return (
     <>
       <Header />
-      <MainContainer/>
-       <SecondaryContainer/>
+
+      {showGptSearch ? (
+        <GPTSearch />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
+
       {/*
       MainContainer
         - Video background

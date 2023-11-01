@@ -4,7 +4,6 @@ import leftarr from "../icons/left-chevron.png";
 import rightarr from "../icons/right-chevron.png";
 
 const MovieList = ({ title, movies }) => {
-  console.log(title, movies);
   const [startingpoint, setstartingpoint] = useState(0);
   const [endingpoint, setendingpoint] = useState(1);
   const ref = useRef();

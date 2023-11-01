@@ -6,7 +6,7 @@ import {auth} from "../utils/firebase";
 import {signInWithEmailAndPassword } from "firebase/auth";
 import { adduser } from "../utils/userSlice";
 import { useDispatch, useSelector } from 'react-redux';
-import { Photo_url } from "../utils/constant";
+import { BG_URL, Photo_url } from "../utils/constant";
 const Login = () => {
   // by default signin for will come
   const [isSigninform, setisSigninform] = useState(true);
@@ -136,8 +136,9 @@ const dispatch = useDispatch();
       <Header />
       <div className="absolute ">
         <img
+        alt="background"
           className="h-screen w-screen"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/9db4a880-3034-4e98-bdea-5d983e86bf52/b5953637-091d-4e02-9754-2bfadc8a8f7c/IN-en-20230925-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          src={BG_URL}
         />
       </div>
 

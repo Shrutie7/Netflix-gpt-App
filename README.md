@@ -37,6 +37,11 @@
 - build Movie Card 
 - TMDB Image CDN
 - usePopular Movie Custom Hook
+- use GPT APIS built by open AI and plug those api in front end app and use it 
+- GPT search Page
+- GPT search Bar
+- MultiLanguage Feature in Search page
+- Integrate GPT Api(get open AI key)
 
 
 <!-- it will give same photourl for previous users hence create a new user the it will show image in constant js file given  -->

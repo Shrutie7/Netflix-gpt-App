@@ -11,13 +11,23 @@ import uparrow from "../icons/Uparrow.png";
 import downarrow from "../icons/Downarrow.png";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
+import search from "../icons/search-13.png"
+import { toggleGptSearchView } from "../utils/gptSlice";
+import {SUPPORTED_LANGUAGES} from "../utils/constant"
+import { changeLanguage } from "../utils/ConfigSlice";
 const Header = () => {
   const dispatch = useDispatch();
   const nav = useNavigate();
   const [errormessage, seterrormessage] = useState(null);
   const [showoverlay, setshowoverlay] = useState(false);
+  
+
+
+
   //subscribe to user Store
   const user = useSelector((store) => store.user);
+
+  const showgptsearch = useSelector((store) => store.gpt.showGptSearch);
 
   const handleSignout = () => {
     signOut(auth)
@@ -66,6 +76,12 @@ const Header = () => {
   const handleoverlay = () => {
     setshowoverlay(!showoverlay);
   };
+
+  const handleGPTsearchclick=()=>{
+    // Toggle search button
+dispatch((toggleGptSearchView()))
+
+  }
   const popover = (
     <Popover id="popover-basic">
       <Popover.Body>
@@ -91,15 +107,34 @@ const Header = () => {
       </Popover.Body>
     </Popover>
   );
+
+  const handleoptionschange = (e)=>{
+    
+      dispatch(changeLanguage(e.target.value));
+    
+   
+  }
   return (
     <div className="absolute flex justify-between w-full px-8 py-2 bg-gradient-to-b from-black z-10">
       <img className="w-44" src={Logo_url} alt="logo" />
 
       {/* display only when signed in i.e when user is there*/}
       {user && (
-        <div className="flex gap-10 p-2">
+        <div className="flex gap-6 pt-2">
+
+        {/* onchange store language selected data also in redux store  */}
+        {showgptsearch?<select onChange={(e)=>handleoptionschange(e)} className="p-2 bg-black opacity-60 text-white h-10">
+        {
+      SUPPORTED_LANGUAGES.map((lang) => (
+        <option key={lang.identifier} value={lang.identifier} >{lang.name}</option>
+      ))
+        } 
+        </select>:<></>}
+        {!showgptsearch?<img src={search} className="h-6 w-6 cursor-pointer" alt="search" onClick={()=>handleGPTsearchclick()}/>:<div className="text-white cursor-pointer" onClick={()=>handleGPTsearchclick()}>Home</div>}
           {/* <p className="text-white">Welcome {user?.displayName}</p> */}
-          <img className="w-12 h-12" src={user?.photoURL} alt="usericon" />
+          <img className="w-9 h-9" src={user?.photoURL} alt="usericon" />
+
+          
 {/* 
           {!showoverlay ? (
             <img
@@ -118,14 +153,14 @@ const Header = () => {
             Sign Out
           </button> */}
 
-          <div>
+          <div className="pt-2">
             
               <OverlayTrigger trigger="click" placement="bottom" overlay={popover} rootClose={true}>
 
               <img
-              src={uparrow}
+              src={downarrow}
               alt="up"
-              className="h-3 w-4 hover:rotate-180"
+              className="h-3 w-4 hover:rotate-180 cursor-pointer"
               onClick={() => handleoverlay()}
             />
               </OverlayTrigger>
