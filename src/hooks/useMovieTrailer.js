@@ -6,6 +6,7 @@ import { useEffect } from "react";
 const useMovieTrailer = (movieId) => {
   const dispatch = useDispatch();
 
+  const trailerVideo = useSelector((store)=>store.movies.trailerVideo)
   //fetch trailer video make api call we need movie id to make api call && update store with trailer video data
 
   const getMovieVideos = async () => {
@@ -27,7 +28,7 @@ const useMovieTrailer = (movieId) => {
     //   filterData.length > 0
     //     ? filterData?.filter((ele) => ele.name === "Official Trailer")
     //     : jsondata?.results[0];
-    let trailer = filterData?.length > 0 ? filterData[0] : jsondata?.results[0];
+    let trailer = filterData?.length > 0 ? filterData?.[0] : jsondata?.results?.[0];
     // console.log(filterData);
     // console.log(trailer);
 
@@ -40,7 +41,7 @@ const useMovieTrailer = (movieId) => {
   };
 
   useEffect(() => {
-    getMovieVideos();
+    !trailerVideo && getMovieVideos();
   }, []);
 };
 

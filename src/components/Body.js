@@ -16,10 +16,11 @@ const Body = () => {
       element: <Browse />,
     },
   ]);
-
+ 
   return (
     // provide routing using RouterProvider
 
+  
     <RouterProvider router={appRouter} />
   );
 };

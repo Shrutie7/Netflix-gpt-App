@@ -12,7 +12,7 @@ import downarrow from "../icons/Downarrow.png";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
 import search from "../icons/search-13.png"
-import { toggleGptSearchView } from "../utils/gptSlice";
+import { removeGptMovieResults, toggleGptSearchView } from "../utils/gptSlice";
 import {SUPPORTED_LANGUAGES} from "../utils/constant"
 import { changeLanguage } from "../utils/ConfigSlice";
 const Header = () => {
@@ -80,6 +80,8 @@ const Header = () => {
   const handleGPTsearchclick=()=>{
     // Toggle search button
 dispatch((toggleGptSearchView()))
+
+dispatch((removeGptMovieResults()))
 
   }
   const popover = (

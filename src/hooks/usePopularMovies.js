@@ -1,6 +1,6 @@
 
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constant";
 import  {addPopularMovie}  from "../utils/movieSlice";
 
@@ -10,6 +10,7 @@ const usePopularMovies = () =>{
     // FETCH Data from TMDB API and update store
     const dispatch = useDispatch();
 
+    const popularMovies = useSelector((store)=>store.movies.popularMovie)
     const getPopularMovies = async () => {
       const data = await fetch(
         'https://api.themoviedb.org/3/movie/popular?page=1',
@@ -27,7 +28,7 @@ const usePopularMovies = () =>{
     // only in local project twice api call is made when we do build for production api call  will not happen twice 
     // if we remove react.strictmode from index.js then api call will happen only once
     useEffect(() => {
-      getPopularMovies();
+      !popularMovies && getPopularMovies();
     }, []);
      
 }

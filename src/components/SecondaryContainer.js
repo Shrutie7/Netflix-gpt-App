@@ -20,19 +20,19 @@ const SecondaryContainer = () => {
 
   const topRatedTvShow = useSelector((store)=>store.movies.topRatedTvShow);
   return (
-    <div className='w-screen bg-black'>
+    <div className='w-screen bg-black border-solid border-blue-500'>
 
 
 {/* to move on top of videoBackground component */}
 <div className='-mt-60 relative z-20'>
-<MovieList title={"Now Playing"} movies={movies}/>
-<MovieList title={"Popular Movies"} movies={popularMovies}/>
-<MovieList title={"Trending Movies"} movies={trendingMovies}/>
-<MovieList title={"Upcoming TV Shows"} movies={AiringTodayTvShow}/>
-<MovieList title={"New Releases"} movies={upcomingMovies}/>
-<MovieList title={"On Air TV shows"} movies={onAirTvShow}/>
-<MovieList title={"Popular TV shows"} movies={popularTvShow}/>
-<MovieList title={"Top Rated TV shows"} movies={topRatedTvShow}/>
+<MovieList rowId="1" title={"Now Playing"} movies={movies}/>
+<MovieList rowId="2" title={"Popular Movies"} movies={popularMovies}/>
+<MovieList rowId="3" title={"Trending Movies"} movies={trendingMovies}/>
+<MovieList rowId="4" title={"Upcoming TV Shows"} movies={AiringTodayTvShow}/>
+<MovieList rowId="5" title={"New Releases"} movies={upcomingMovies}/>
+<MovieList rowId="6" title={"On Air TV shows"} movies={onAirTvShow}/>
+<MovieList rowId="7" title={"Popular TV shows"} movies={popularTvShow}/>
+<MovieList rowId="8" title={"Top Rated TV shows"} movies={topRatedTvShow}/>
 </div>
       {/* 
       MovieList - Popular

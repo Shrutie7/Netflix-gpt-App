@@ -41,7 +41,38 @@
 - GPT search Page
 - GPT search Bar
 - MultiLanguage Feature in Search page
-- Integrate GPT Api(get open AI key)
+- Integrate GPT Api(get open AI key) from platform.openAI.com create a new secret key(cannot reuse same key again)
+- Install Library npm openAI and register on platform.openAI and put API key in constants file
+- Initialize OpenAI in OPENAI.js file and put api key in it from constants file
+- this openai will give helper functions and we can access openai.chat apis . openai.chat returns a promise hence to resolve it use async await , there are multiple models in gpt ...gpt 3-turbo, gpt 3.5 turbo, gpt-4
+-  we'll use gpt-3.5-turbo apis
+- from gptsearch we get a list of 5 movies . we will search those 5 movies in tmdb api movie search to fetch those 5 movies and show the user
+- tmdb api will give you a list of many movies (array of arrays)which has the name of those 5 movies included and we will show all those movies under gpt search bar . push all the movies inside store and then we fetch movies from store and show . in gptslice add 1 more action in order to store all the movies we get from tmdb api 
+- once u click on search button make api call , search for the movie and push it in store and then take from store in order to show movies that u r searching for. also in store add gpt movie names that u got. in the same action .(both gptMovies and tmdbresults) hence instead of directky passing movies as tmdbresults pass in an object {movieNames:gptMovies,movieResults:tmdbresults} in store also create variable for movieNames,movieResults which r null initially extract them from action.payload in same action and then update state  
+const { movieNames, movieResults } = action.payload;
+      state.movieNames = movieNames;
+      state.movieResults = movieResults;
+- Create MovieSuggestion UI page resuse movieList.js file 
+- if we search for any genre of movie in gpt search and go to homepage and come back the search results will still come bcoz the movies are persistent in redux store . even on changing page redux store data is still there
+hence to empty store dispatch action and clear slice 
+
+
+- good way to keep openAI key is in .env file also in production . whatever secret keys we have keep in .env file. Mandatory to add REACT_APP in .env file in any key ex. REACT_APP_OPENAI_KEY = . 
+in next store TMDB KEY in .env file in . 
+ex. REACT_APP_TMDB_KEY = . [dont keep in double quotes in env file]
+dont keep sensitive information in constants or any file bcoz the constant file will also be bundled and shipped to production so it can be easily hacked 
+
+
+- to read key from .env file use process.env.keyname
+- when we change in .env file restart react app 
+
+- add env file to gitignore so it is not pushed in github/ into production/deployment 
+
+
+- so we will set/keep .env file/environment variables wherver we r hosting the app (firebase/netlify etc)
+
+-Memoization - reduce no of api calls (every time component is loaded hook is called store is updated but if data is already present in store no need to make unnecessary API calls)(check if nowPlayingMovies is present in store or not if already present in store then dont make api call . it will save us a lot of api calls)
+
 
 
 <!-- it will give same photourl for previous users hence create a new user the it will show image in constant js file given  -->
