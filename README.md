@@ -41,6 +41,22 @@
 - GPT search Page
 - GPT search Bar
 - MultiLanguage Feature in Search page
+
+- Get Open AI API key 
+- Gpt Search API call
+- fetched gptMovieSuggestion from TMDB 
+- created gptSlice added data
+-reused movieList component to make movie Suggestion container in gpt search page 
+- Memoization
+- Added .env file 
+- Added .env file to .gitignore
+- Made our site Responsive
+- Make status bar of our site with netflix logo and netflixgpt name in public folder in title in index.html and add your favicon as netflix icon in favicon.ico
+
+
+
+
+*******
 - Integrate GPT Api(get open AI key) from platform.openAI.com create a new secret key(cannot reuse same key again)
 - Install Library npm openAI and register on platform.openAI and put API key in constants file
 - Initialize OpenAI in OPENAI.js file and put api key in it from constants file
@@ -73,6 +89,12 @@ dont keep sensitive information in constants or any file bcoz the constant file 
 
 -Memoization - reduce no of api calls (every time component is loaded hook is called store is updated but if data is already present in store no need to make unnecessary API calls)(check if nowPlayingMovies is present in store or not if already present in store then dont make api call . it will save us a lot of api calls)
 
+
+******************************************
+- default : mobile 
+- if sm: screen is greater than smaller devices - tab
+- if md: screen is greater than medium devices - desktop
+******************************************
 
 
 <!-- it will give same photourl for previous users hence create a new user the it will show image in constant js file given  -->

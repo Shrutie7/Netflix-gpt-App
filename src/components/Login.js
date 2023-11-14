@@ -137,13 +137,13 @@ const dispatch = useDispatch();
       <div className="absolute ">
         <img
         alt="background"
-          className="h-screen w-screen"
+          className="h-screen object-cover w-screen fixed"
           src={BG_URL}
         />
       </div>
 
       <form
-        className="bg-black bg-opacity-80 p-12 absolute rounded-md w-2/6 my-28 mx-auto right-0 left-0 "
+        className="w-5/6 md:w-2/6 my-24 bg-black bg-opacity-80 p-12 absolute rounded-md my-24 mx-auto right-0 left-0 "
         onSubmit={(e) => e.preventDefault()}
       >
         <div className="text-white font-semibold text-3xl  py-4">

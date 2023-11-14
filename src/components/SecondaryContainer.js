@@ -20,11 +20,11 @@ const SecondaryContainer = () => {
 
   const topRatedTvShow = useSelector((store)=>store.movies.topRatedTvShow);
   return (
-    <div className='w-screen bg-black border-solid border-blue-500'>
+    <div className="bg-black">
 
 
 {/* to move on top of videoBackground component */}
-<div className='-mt-60 relative z-20'>
+<div className='mt-0 md:-mt-60 pl-2 md:pl-0 relative z-20'>
 <MovieList rowId="1" title={"Now Playing"} movies={movies}/>
 <MovieList rowId="2" title={"Popular Movies"} movies={popularMovies}/>
 <MovieList rowId="3" title={"Trending Movies"} movies={trendingMovies}/>

@@ -12,10 +12,10 @@ const VideoBackground = ({ movieId }) => {
   // put trailer key either in useState or use redux store. keep information of trailer in redux store in moviesSlice and just take key from there using selector.no need of state variable then
 
   return (
-    <div className="w-screen">
+    <div className="w-full">
       <iframe
        
-       className="w-screen aspect-video"
+       className="w-full aspect-video"
         src={"https://www.youtube.com/embed/" + trailerVideo?.key + "?&autoplay=1&mute=1&loop=1&rel=0&amp&controls=0"}
         
         title="YouTube video player"

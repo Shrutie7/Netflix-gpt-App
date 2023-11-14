@@ -21,7 +21,7 @@ const{original_title,overview,id,poster_path,backdrop_path} = mainMovie
  
 
   return (
-    <div>
+    <div className="pt-[30%] bg-black md:pt-0 ">
       <VideoTitle title={original_title} overview ={overview} poster_path={poster_path} backdrop_path={backdrop_path}/>
       <VideoBackground movieId={id} />
 
