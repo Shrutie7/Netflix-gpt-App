@@ -1,12 +1,14 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import lang from "../utils/languageConstants";
 import { useDispatch, useSelector } from "react-redux";
 import openai from "../utils/openai";
 import { API_OPTIONS } from "../utils/constant";
 import { addGptMovieResults } from "../utils/gptSlice";
-
+import Spinner from "react-bootstrap/Spinner";
+import { Modal } from "react-bootstrap";
 const GPTSearchBar = () => {
   const searchText = useRef(null);
+  const [searchspin,setsearchspin]=useState(true)
 
   const dispatch = useDispatch();
 
@@ -26,6 +28,7 @@ const GPTSearchBar = () => {
   };
 
   const handleGptSearchClick = async () => {
+    setsearchspin(true);
     console.log(searchText.current.value);
     // use this searchtext to make api call
     // Make an API call to GPT API to get Movie Results
@@ -69,6 +72,11 @@ const GPTSearchBar = () => {
     console.log(tmdbResults);
     dispatch(addGptMovieResults({movieNames:gptMovies ,movieResults:tmdbResults}));
 
+    // if(tmdbResults.length>0)
+    // {
+    //   setsearchspin(false);
+    // }
+    
     // This api call will throw an error ... It looks like you're running in a browser-like environment bcoz we are making api call from client side not server side as a result your api key may get leaked . best practice is to make api call from backend/node. but if you still wan tto make api call like this then you need to set dangerouslyAllowBrowser flag to true in openai file in utils/openAi.js file
     //by default openai doesnt allow u to make api call from browser , if we set dangerouslyAllowBrowser flag to true then openai allow us to make call from browser also
   };
@@ -91,6 +99,9 @@ const GPTSearchBar = () => {
           onClick={() => handleGptSearchClick()}
         >
           {lang?.[language]?.search}
+          
+
+       
         </button>
 
         {/* onclick of search button it will submit the form and refresh the page hence use e.prevent default() on submit of form to prevent refresh of page*/}

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import MovieCard from "./MovieCard";
 import {MdChevronLeft,MdChevronRight} from "react-icons/md"
+import { Link } from "react-router-dom";
 
 const MovieList = ({ title, movies,rowId }) => {
 
@@ -27,9 +28,9 @@ const MovieList = ({ title, movies,rowId }) => {
           <div id={"slider"+rowId} 
           className="w-full h-full overflow-x-hidden whitespace-nowrap scroll-smooth  relative">
           {movies?.map((movie,id) => (
-            
+            <Link to={"/browse/moreinfo/" + movie.id}>
               <MovieCard key={movie.id} movie={movie} id={movie.id} />
-            
+            </Link>
           ))}
           </div>
     <MdChevronRight size={40} onClick={slideRight} color="black" className="bg-white right-0 rounded-full opacity-20 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"/>

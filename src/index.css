@@ -2,11 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .moviecardmain{
-    width: 308px;
-    margin-left: 28px !important;
-} */
-/* .moviecardmain:first-child{
-    width: 208px;
-    margin-left: 0px;
-} */
+.main{
+
+        /*Position and width*/
+        position: fixed;
+        width: 90%;
+        /* height: fit-content; */
+        height:600px;
+        
+        /*NOTE: If you want your modal's position to be absolute or fixed, you should also include:*/
+        top: 60px;
+        left: 5%;
+        right: 0;
+        bottom: 0;
+      overflow-y: scroll;
+        
+        /*Centering horizintally*/
+        /* margin: auto; */
+      
+        /*Purely visual stuff*/
+        border: 2px solid #ccc;
+        border-radius: 3px;
+        background-color: ghostwhite;
+       
+        z-index:9999;
+      
+}

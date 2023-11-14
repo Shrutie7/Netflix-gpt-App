@@ -11,7 +11,7 @@ import uparrow from "../icons/Uparrow.png";
 import downarrow from "../icons/Downarrow.png";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
-import search from "../icons/search-13.png"
+import search from "../icons/search-13.png";
 import { removeGptMovieResults, toggleGptSearchView } from "../utils/gptSlice";
 import {SUPPORTED_LANGUAGES} from "../utils/constant"
 import { changeLanguage } from "../utils/ConfigSlice";

@@ -1,19 +1,11 @@
-import React, { useState } from "react";
-import { IMG_CDN_URL } from "../utils/constant";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { API_OPTIONS, IMG_CDN_URL } from "../utils/constant";
+import { useDispatch, useSelector } from "react-redux";
 import HoverCard from "./HoverCard";
 import useMovieTrailer from "../hooks/useMovieTrailer";
+import { addIndividualTrailerVideo } from "../utils/movieSlice";
 
 const MovieCard = ({ movie, id }) => {
-  const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
-
-  // useMovieTrailer(movie?.id);
-
-  const [onhover, setonhover] = useState(false);
-
-  const handlehover = () => {
-    setonhover(!onhover);
-  };
   if (!movie?.backdrop_path) return null;
 
   return (
@@ -24,12 +16,13 @@ const MovieCard = ({ movie, id }) => {
         className="w-full h-auto block"
       />
 
-      <div
-        className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white"
-        onMouseOver={() => handlehover()}
-      >
+      <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white">
         <p className="white-space-normal text-xs font-normal md:text-sm font-bold flex justify-center items-center h-full text-center">
-          {movie?.title ? movie?.title.length<28 ?movie?.title: movie?.title?.toString()?.substring(0,28)+"..." : movie?.original_name}
+          {movie?.title
+            ? movie?.title.length < 28
+              ? movie?.title
+              : movie?.title?.toString()?.substring(0, 28) + "..."
+            : movie?.original_name}
         </p>
       </div>
     </div>
